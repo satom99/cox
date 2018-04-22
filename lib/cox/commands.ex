@@ -4,7 +4,7 @@ defmodule Cox.Commands do
 
   @prefix "|>"
 
-  @permit &admin?/1
+  @permit &admin?/2
   command info do
     project = Coxir.Mixfile.project()
     version = project[:version]
@@ -62,7 +62,7 @@ defmodule Cox.Commands do
     Message.reply(message, %{embed: embed})
   end
 
-  @permit &admin?/1
+  @permit &admin?/2
   command eval(string) do
     binding = [
       user: User.get(),
@@ -102,21 +102,21 @@ defmodule Cox.Commands do
   end
 
   @space :voice
-  @permit &admin?/1
+  @permit &admin?/2
   command join do
     member.voice
     |> Voice.join
   end
 
   @space :voice
-  @permit &admin?/1
+  @permit &admin?/2
   command leave do
     member.voice
     |> Voice.leave
   end
 
   @space :voice
-  @permit &admin?/1
+  @permit &admin?/2
   command play(term) do
     message
     |> join
@@ -126,7 +126,7 @@ defmodule Cox.Commands do
   end
 
   @space :voice
-  @permit &admin?/1
+  @permit &admin?/2
   command stop do
     member.voice
     |> Voice.stop_playing

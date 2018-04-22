@@ -1,6 +1,6 @@
 defmodule Cox.Helpers do
-  def admin?(member) do
-    member.user.id in [
+  def admin?(user, _channel) do
+    user.id in [
       "163801294002323458"
     ]
   end
