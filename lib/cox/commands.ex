@@ -70,6 +70,11 @@ defmodule Cox.Commands do
       message: message
     ]
 
+    string = string
+    |> String.trim_leading("`")
+    |> String.trim_leading("elixir")
+    |> String.trim_trailing("`")
+
     result = \
     try do
       string
